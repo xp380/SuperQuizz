@@ -1,0 +1,14 @@
+form {
+  overflow: hidden;
+}
+
+input {
+  float: left;
+  width: calc(70%);
+}
+
+button {
+  float: right;
+  width: calc(50%);
+  margin-right: 300px;
+}

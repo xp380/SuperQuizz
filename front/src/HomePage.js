@@ -11,10 +11,24 @@ const { Header, Footer } = Layout;
 const { TabPane } = Tabs;
 
 export default function HomePage() {
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
   return (
     <div>
       <Layout>
         <Header className="head">Test0</Header>
+        <button
+          style={{
+            width: 200,
+            height: 30,
+            backgroundColor: "black",
+            color: "white",
+          }}
+          onClick={refreshPage}
+        >
+          Click to replay!
+        </button>
         <Tabs defaultActiveKey="1">
           <TabPane tab="Code" key="1">
             <Code />

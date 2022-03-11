@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { send } from "emailjs-com";
+import "./Contact.css";
 
 const Contact = () => {
   const [toSend, setToSend] = useState({
@@ -30,7 +31,7 @@ const Contact = () => {
     setToSend({ ...toSend, [e.target.name]: e.target.value });
   };
   return (
-    <div className="App">
+    <div style={{ marginLeft: "50%", marginTop: "20%" }}>
       <form onSubmit={onSubmit}>
         <input
           type="text"
