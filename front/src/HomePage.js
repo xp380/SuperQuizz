@@ -1,30 +1,33 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Code from "./Quizz/Code";
+import History from "./Quizz/History";
+import Joke from "./Quizz/Joke";
 import "./HomePage.css";
+import { Layout, Tabs } from "antd";
+const { Header, Footer } = Layout;
 
-import { Layout } from "antd";
-const { Header, Footer, Content } = Layout;
-
-const foot = {
-  borderTop: "1px solid #e8e8e8",
-  position: "fixed",
-  left: 0,
-  bottom: 0,
-  width: "100%",
-  backgroundColor: "#001529",
-  color: "white",
-  height: 50,
-};
+const { TabPane } = Tabs;
 
 export default function HomePage() {
   return (
     <div>
       <Layout>
-        <Header className="head">Test</Header>
-        <Content className="content">Contenu</Content>
+        <Header className="head">Test0</Header>
+        <Tabs defaultActiveKey="1">
+          <TabPane tab="Code" key="1">
+            <Code />
+          </TabPane>
+          <TabPane tab="History" key="2">
+            <History />
+          </TabPane>
+          <TabPane tab="Joke" key="3">
+            <Joke />
+          </TabPane>
+        </Tabs>
       </Layout>
 
-      <Footer style={foot}>Test</Footer>
+      <Footer className="foot">Test</Footer>
     </div>
   );
 }
