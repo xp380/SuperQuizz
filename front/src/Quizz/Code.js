@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Modal, Button } from "antd";
-import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
+import {
+  SmileOutlined,
+  FrownOutlined,
+  CloseCircleOutlined,
+} from "@ant-design/icons";
 import "./Code.css";
 
 const Code = () => {
@@ -41,7 +45,6 @@ const Code = () => {
     },
   ];
   const [isModalVisible, setIsModalVisible] = useState(false);
-
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
@@ -63,9 +66,11 @@ const Code = () => {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
+  const close = (
+    <div className="designclose">
+      <CloseCircleOutlined />
+    </div>
+  );
 
   const handleCancel = () => {
     setIsModalVisible(false);
@@ -104,11 +109,12 @@ const Code = () => {
             </div>
             <Modal
               visible={isModalVisible}
-              onOk={handleOk}
+              closeIcon={close}
               onCancel={handleCancel}
-              width={200}
+              footer={false}
+              width={600}
             >
-              {questions[currentQuestion].clueAnswers}
+              <div>{questions[currentQuestion].clueAnswers} </div>
             </Modal>
           </div>
           <div className="designAnswers">

@@ -56,6 +56,16 @@ export default function HomePage() {
       </Layout>
       <Footer className="foot">
         <Time />
+        <p
+          style={{
+            marginLeft: "80%",
+            fontWeight: "bolder",
+            fontSize: 20,
+            height: 20,
+          }}
+        >
+          Contact
+        </p>
       </Footer>
     </div>
   );

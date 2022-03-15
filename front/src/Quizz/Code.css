@@ -15,3 +15,8 @@
   background-color: white;
   transition: all 1s ease-out;
 }
+
+.designClose {
+  color: white;
+  font-size: 30px;
+}
