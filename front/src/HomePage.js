@@ -19,16 +19,20 @@ export default function HomePage() {
     <div>
       <Layout>
         <Header className="head">
-          <ReloadOutlined style={{ fontSize: 30 }} onClick={refreshPage} />
-          <div
+          <ReloadOutlined
+            style={{ fontSize: 30, marginTop: 20 }}
+            onClick={refreshPage}
+          />
+          <span
             style={{
               color: "white",
-              // position: "absolute",
-              marginLeft: 200,
+              fontWeight: "bolder",
+              fontSize: 25,
+              marginLeft: 600,
             }}
           >
             SuperQuizz app
-          </div>
+          </span>
         </Header>
         <Content className="layout-content">
           <Tabs
@@ -47,9 +51,6 @@ export default function HomePage() {
             <TabPane tab="Contact" key="4">
               <Contact />
             </TabPane>
-            {/* <TabPane tab="reload" key="5">
-              <ReloadOutlined onClick={refreshPage} />
-            </TabPane> */}
           </Tabs>
         </Content>
       </Layout>

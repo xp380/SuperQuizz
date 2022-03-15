@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Modal, Button } from "antd";
+import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 import "./Code.css";
 
 const Code = () => {
@@ -14,6 +16,7 @@ const Code = () => {
           isCorrect: false,
         },
       ],
+      clueAnswers: "Le film Social Network",
     },
     {
       questionText: "Qui est le créateur de ce site web ?",
@@ -23,17 +26,21 @@ const Code = () => {
         { answerText: "Bill Gates", isCorrect: false },
         { answerText: "Tony Stark", isCorrect: false },
       ],
+      clueAnswers: "Ça commence par la lettre V",
     },
     {
-      questionText: "Quelle crise frappe en ce moment?",
+      questionText:
+        "Quelle méthode pour afficher les données d'un tableau en javascript",
       answerOptions: [
-        { answerText: "Covid 19", isCorrect: true },
-        { answerText: "Ebola", isCorrect: false },
-        { answerText: "Crise économique", isCorrect: false },
-        { answerText: "Sida", isCorrect: false },
+        { answerText: "map", isCorrect: true },
+        { answerText: "filter", isCorrect: false },
+        { answerText: "reduce", isCorrect: false },
+        { answerText: "forEach", isCorrect: false },
       ],
+      clueAnswers: "map est une carte qui affiche tout son contenu",
     },
   ];
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
@@ -51,11 +58,33 @@ const Code = () => {
       setShowScore(true);
     }
   };
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   return (
     <div>
       {showScore ? (
-        <div>
-          You scored {score} out of {questions.length}
+        <div style={{ textAlign: "center", marginTop: 200, fontSize: 30 }}>
+          You scored {score} out of {questions.length} <br />
+          {score > 2 ? (
+            <div>
+              Congratulation !!! <SmileOutlined />
+            </div>
+          ) : (
+            <div>
+              Too bad, You will do it better next time <br />
+              <FrownOutlined />
+            </div>
+          )}
         </div>
       ) : (
         <>
@@ -69,16 +98,27 @@ const Code = () => {
               style={{ marginLeft: 500, fontSize: 15, fontWeight: "bolder" }}
             >
               {questions[currentQuestion].questionText}
+              <Button style={{ width: 200 }} type="primary" onClick={showModal}>
+                Indice
+              </Button>
             </div>
+            <Modal
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+              width={200}
+            >
+              {questions[currentQuestion].clueAnswers}
+            </Modal>
           </div>
           <div className="designAnswers">
             {questions[currentQuestion].answerOptions.map((answerOption) => (
-              <button
+              <Button
                 className="buttonAnswers"
                 onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
               >
                 {answerOption.answerText}
-              </button>
+              </Button>
             ))}
           </div>
         </>

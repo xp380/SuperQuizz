@@ -8,3 +8,10 @@
   margin-top: 20px;
   background-color: lightskyblue;
 }
+
+.buttonAnswers:hover,
+.buttonAnswers:focus {
+  color: black;
+  background-color: white;
+  transition: all 1s ease-out;
+}
