@@ -103,7 +103,11 @@ const Code = () => {
               style={{ marginLeft: 500, fontSize: 15, fontWeight: "bolder" }}
             >
               {questions[currentQuestion].questionText}
-              <Button style={{ width: 200 }} type="primary" onClick={showModal}>
+              <Button
+                style={{ width: 200, color: "black" }}
+                type="primary"
+                onClick={showModal}
+              >
                 Indice
               </Button>
             </div>
