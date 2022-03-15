@@ -1,21 +1,22 @@
 import React, { useState } from "react";
+import "./Code.css";
 
-export default function Quiz() {
+const Code = () => {
   const questions = [
     {
-      questionText: "Quel est le premier jeu de fire emblem ?",
+      questionText: "Quelle entreprise a développé React ?",
       answerOptions: [
-        { answerText: "Shadow Dragon & the Blade of Light", isCorrect: true },
-        { answerText: "Three Houses", isCorrect: false },
-        { answerText: "Sacred Stones", isCorrect: false },
+        { answerText: "Facebook", isCorrect: true },
+        { answerText: "Alibaba", isCorrect: false },
+        { answerText: "Amazon", isCorrect: false },
         {
-          answerText: "Path of Radiance",
+          answerText: "Microsoft",
           isCorrect: false,
         },
       ],
     },
     {
-      questionText: "Qui est le créteur de ce site web ?",
+      questionText: "Qui est le créateur de ce site web ?",
       answerOptions: [
         { answerText: "Jeff Bezos", isCorrect: false },
         { answerText: "Vincent Kouoï", isCorrect: true },
@@ -51,24 +52,29 @@ export default function Quiz() {
     }
   };
   return (
-    <div className="app">
+    <div>
       {showScore ? (
-        <div className="score-section">
+        <div>
           You scored {score} out of {questions.length}
         </div>
       ) : (
         <>
-          <div className="question-section">
-            <div className="question-count">
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
+          <div>
+            <div>
+              <span style={{ fontSize: 15, fontWeight: "bolder" }}>
+                Question {currentQuestion + 1}/{questions.length}
+              </span>
             </div>
-            <div className="question-text">
+            <div
+              style={{ marginLeft: 500, fontSize: 15, fontWeight: "bolder" }}
+            >
               {questions[currentQuestion].questionText}
             </div>
           </div>
-          <div className="answer-section">
+          <div className="designAnswers">
             {questions[currentQuestion].answerOptions.map((answerOption) => (
               <button
+                className="buttonAnswers"
                 onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
               >
                 {answerOption.answerText}
@@ -79,4 +85,6 @@ export default function Quiz() {
       )}
     </div>
   );
-}
+};
+
+export default Code;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Quiz() {
+const Joke = () => {
   const questions = [
     {
       questionText: "Quel est le premier jeu de fire emblem ?",
@@ -79,4 +79,5 @@ export default function Quiz() {
       )}
     </div>
   );
-}
+};
+export default Joke;

@@ -1,9 +1,12 @@
 .head {
   color: white;
+  display: flex;
+  flex-direction: row;
 }
 
 .layout-content {
   height: 790px;
+  background-color: steelblue;
 }
 
 .foot {

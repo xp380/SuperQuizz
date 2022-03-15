@@ -6,8 +6,9 @@ import Time from "./Components/Time";
 import Contact from "./Components/Contact";
 import "./HomePage.css";
 import { Layout, Tabs } from "antd";
-const { Header, Footer, Content } = Layout;
+import { ReloadOutlined } from "@ant-design/icons";
 
+const { Header, Footer, Content } = Layout;
 const { TabPane } = Tabs;
 
 export default function HomePage() {
@@ -17,20 +18,23 @@ export default function HomePage() {
   return (
     <div>
       <Layout>
-        <Header className="head">Test0</Header>
-        <Content className="layout-content">
-          <button
+        <Header className="head">
+          <ReloadOutlined style={{ fontSize: 30 }} onClick={refreshPage} />
+          <div
             style={{
-              width: 200,
-              height: 30,
-              backgroundColor: "black",
               color: "white",
+              // position: "absolute",
+              marginLeft: 200,
             }}
-            onClick={refreshPage}
           >
-            Click to replay!
-          </button>
-          <Tabs defaultActiveKey="1">
+            SuperQuizz app
+          </div>
+        </Header>
+        <Content className="layout-content">
+          <Tabs
+            style={{ fontSize: 15, fontWeight: "bolder" }}
+            defaultActiveKey="1"
+          >
             <TabPane tab="Code" key="1">
               <Code />
             </TabPane>
@@ -43,6 +47,9 @@ export default function HomePage() {
             <TabPane tab="Contact" key="4">
               <Contact />
             </TabPane>
+            {/* <TabPane tab="reload" key="5">
+              <ReloadOutlined onClick={refreshPage} />
+            </TabPane> */}
           </Tabs>
         </Content>
       </Layout>
