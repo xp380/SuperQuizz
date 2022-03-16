@@ -31,40 +31,60 @@ const Contact = () => {
     setToSend({ ...toSend, [e.target.name]: e.target.value });
   };
   return (
-    <div style={{ marginLeft: "50%", marginTop: "20%" }}>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          name="from_name"
-          placeholder="from name"
-          value={toSend.from_name}
-          onChange={handleChange}
-        />
-        <input
-          style={{ display: "none" }}
-          type="text"
-          name="to_name"
-          placeholder="to name"
-          value={toSend.to_name}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="message"
-          placeholder="Your message"
-          value={toSend.message}
-          onChange={handleChange}
-        />
-        <input
-          style={{ display: "none" }}
-          type="text"
-          name="reply_to"
-          placeholder="Your email"
-          value={toSend.reply_to}
-          onChange={handleChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
+    <div>
+      <h1 style={{ textAlign: "center", fontWeight: "bolder" }}>
+        Formulaire d'email
+      </h1>
+      <div
+        style={{
+          marginLeft: 450,
+          marginTop: 200,
+          width: 700,
+          border: "solid",
+        }}
+      >
+        <form onSubmit={onSubmit}>
+          <input
+            style={{ marginLeft: 200, width: 300 }}
+            type="email"
+            name="from_name"
+            placeholder="votre adresse email"
+            value={toSend.from_name}
+            onChange={handleChange}
+          />
+          <input
+            style={{ display: "none" }}
+            type="text"
+            name="to_name"
+            placeholder="to name"
+            value={toSend.to_name}
+            onChange={handleChange}
+          />
+
+          <input
+            style={{ marginTop: 20, width: 700, height: 100 }}
+            type="textarea"
+            name="message"
+            placeholder="Votre message"
+            value={toSend.message}
+            onChange={handleChange}
+          />
+          <input
+            style={{ display: "none" }}
+            type="text"
+            name="reply_to"
+            placeholder="Your email"
+            value={toSend.reply_to}
+            onChange={handleChange}
+          />
+          <button
+            style={{ width: 200, marginTop: 20, marginLeft: 200 }}
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
