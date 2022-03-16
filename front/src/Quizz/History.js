@@ -1,35 +1,56 @@
 import React, { useState } from "react";
+import { Modal, Button } from "antd";
+import {
+  SmileOutlined,
+  FrownOutlined,
+  CloseCircleOutlined,
+} from "@ant-design/icons";
 
 const History = () => {
   const questions = [
     {
-      questionText: "Quel est le premier jeu de fire emblem ?",
+      questionText: "On situe l’apparition de l’homme à :",
       answerOptions: [
-        { answerText: "Shadow Dragon & the Blade of Light", isCorrect: true },
-        { answerText: "Three Houses", isCorrect: false },
-        { answerText: "Sacred Stones", isCorrect: false },
+        { answerText: "10 millions d'année avant J.C", isCorrect: false },
+        { answerText: "5 millions d'année avant J.C", isCorrect: false },
+        { answerText: "3 millions d'année avant J.C", isCorrect: true },
         {
-          answerText: "Path of Radiance",
+          answerText: "8 millions d'année avant J.C",
           isCorrect: false,
         },
       ],
     },
     {
-      questionText: "Qui est le créteur de ce site web ?",
+      questionText:
+        "En 1 500 av. J.-C., la conquête du territoire français commence avec :",
       answerOptions: [
-        { answerText: "Jeff Bezos", isCorrect: false },
-        { answerText: "Vincent Kouoï", isCorrect: true },
-        { answerText: "Bill Gates", isCorrect: false },
-        { answerText: "Tony Stark", isCorrect: false },
+        { answerText: "Les Celtes", isCorrect: true },
+        { answerText: "Les tribus belges", isCorrect: false },
+        { answerText: "Les Avernes", isCorrect: false },
       ],
     },
     {
-      questionText: "Quelle crise frappe en ce moment?",
+      questionText: "On situe l’âge de fer à :",
       answerOptions: [
-        { answerText: "Covid 19", isCorrect: true },
-        { answerText: "Ebola", isCorrect: false },
-        { answerText: "Crise économique", isCorrect: false },
-        { answerText: "Sida", isCorrect: false },
+        { answerText: "700 av.J.-C", isCorrect: false },
+        { answerText: "1500 av.J.-C", isCorrect: true },
+        { answerText: "300 ap.J-C", isCorrect: false },
+      ],
+    },
+    {
+      questionText: "L’Antiquité démarre :",
+      answerOptions: [
+        { answerText: "En 700 av.J.-C", isCorrect: false },
+        { answerText: "En 1000 av.J.-C", isCorrect: false },
+        { answerText: "En 476", isCorrect: true },
+      ],
+    },
+    {
+      questionText: "Vercingétorix est vaincu à Alésia en 52 av. J.-C. par :",
+      answerOptions: [
+        { answerText: "Charlemagne", isCorrect: false },
+        { answerText: "Les vikings", isCorrect: false },
+        { answerText: "Jules César", isCorrect: true },
       ],
     },
   ];
@@ -51,28 +72,44 @@ const History = () => {
     }
   };
   return (
-    <div className="app">
+    <div>
       {showScore ? (
-        <div className="score-section">
-          You scored {score} out of {questions.length}
+        <div style={{ textAlign: "center", marginTop: 200, fontSize: 30 }}>
+          You scored {score} out of {questions.length} <br />
+          {score > 4 ? (
+            <div>
+              Congratulation !!! <SmileOutlined />
+            </div>
+          ) : (
+            <div>
+              Too bad, You will do it better next time <br />
+              <FrownOutlined />
+            </div>
+          )}
         </div>
       ) : (
         <>
-          <div className="question-section">
-            <div className="question-count">
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
+          <div>
+            <div>
+              <span style={{ fontSize: 15, fontWeight: "bolder" }}>
+                Question {currentQuestion + 1}/{questions.length}
+              </span>
             </div>
-            <div className="question-text">
-              {questions[currentQuestion].questionText}
-            </div>
+            <div>{questions[currentQuestion].questionText}</div>
           </div>
-          <div className="answer-section">
+          <div
+            style={{
+              display: "inline-block",
+              marginTop: 20,
+            }}
+          >
             {questions[currentQuestion].answerOptions.map((answerOption) => (
-              <button
+              <Button
+                style={{ width: 250 }}
                 onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
               >
                 {answerOption.answerText}
-              </button>
+              </Button>
             ))}
           </div>
         </>
