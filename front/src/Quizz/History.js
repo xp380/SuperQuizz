@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { Modal, Button } from "antd";
-import {
-  SmileOutlined,
-  FrownOutlined,
-  CloseCircleOutlined,
-} from "@ant-design/icons";
+import { Button } from "antd";
+import "./History.css";
+import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 
 const History = () => {
   const questions = [
@@ -19,6 +16,9 @@ const History = () => {
           isCorrect: false,
         },
       ],
+      realAnswers: "3 millions d'année avant J.C",
+      clueAnswers:
+        "https://i.f1g.fr/media/ext/704x396_crop/sante.lefigaro.fr/sites/default/files/media/field_media_image/4bc43a0a-19d1-11e2-8029-a0510b876afb-493x328.jpg",
     },
     {
       questionText:
@@ -28,6 +28,9 @@ const History = () => {
         { answerText: "Les tribus belges", isCorrect: false },
         { answerText: "Les Avernes", isCorrect: false },
       ],
+      realAnswers: "Les Celtes",
+      clueAnswers:
+        "https://i.la-croix.com/1400x933/smart/2016/08/07/1200780589/Une-cavalerie-celte-traversant-cours-Illustration-Giuseppe-Rava_0.jpg",
     },
     {
       questionText: "On situe l’âge de fer à :",
@@ -36,6 +39,9 @@ const History = () => {
         { answerText: "1500 av.J.-C", isCorrect: true },
         { answerText: "300 ap.J-C", isCorrect: false },
       ],
+      realAnswers: "1500 av.J.-C",
+      clueAnswers:
+        "https://www.larousse.fr/encyclopedie/data/images/1309818-%C3%82ge_du_fer_par_G_Mathieu.jpg",
     },
     {
       questionText: "L’Antiquité démarre :",
@@ -44,6 +50,9 @@ const History = () => {
         { answerText: "En 1000 av.J.-C", isCorrect: false },
         { answerText: "En 476", isCorrect: true },
       ],
+      realAnswers: "En 476",
+      clueAnswers:
+        "https://jeretiens.net/wp-content/uploads/2016/08/ligne_du_temps.jpg",
     },
     {
       questionText: "Vercingétorix est vaincu à Alésia en 52 av. J.-C. par :",
@@ -52,13 +61,19 @@ const History = () => {
         { answerText: "Les vikings", isCorrect: false },
         { answerText: "Jules César", isCorrect: true },
       ],
+      realAnswers: "Jules César",
+      clueAnswers:
+        "http://img.over-blog-kiwi.com/1/48/43/10/20150305/ob_537cfa_vercin.jpg",
     },
   ];
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
-
+  console.log(
+    "test",
+    questions.map((data) => data.questionText)
+  );
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
       setScore(score + 1);
@@ -74,7 +89,7 @@ const History = () => {
   return (
     <div>
       {showScore ? (
-        <div style={{ textAlign: "center", marginTop: 200, fontSize: 30 }}>
+        <div style={{ textAlign: "center", marginTop: 100, fontSize: 30 }}>
           You scored {score} out of {questions.length} <br />
           {score > 4 ? (
             <div>
@@ -84,6 +99,13 @@ const History = () => {
             <div>
               Too bad, You will do it better next time <br />
               <FrownOutlined />
+              <br />
+              Les réponses:
+              {questions.map((data) => (
+                <ul style={{ marginLeft: 500 }}>
+                  <li style={{ marginRight: 600 }}>{data.realAnswers}</li>
+                </ul>
+              ))}
             </div>
           )}
         </div>
@@ -95,23 +117,33 @@ const History = () => {
                 Question {currentQuestion + 1}/{questions.length}
               </span>
             </div>
-            <div>{questions[currentQuestion].questionText}</div>
+            <div
+              style={{ marginLeft: 500, fontSize: 15, fontWeight: "bolder" }}
+            >
+              {questions[currentQuestion].questionText}
+            </div>
           </div>
-          <div
+          <span
             style={{
-              display: "inline-block",
+              display: "flex",
               marginTop: 20,
+              marginLeft: 20,
             }}
           >
             {questions[currentQuestion].answerOptions.map((answerOption) => (
               <Button
-                style={{ width: 250 }}
+                className="historyButtons"
                 onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
               >
                 {answerOption.answerText}
               </Button>
             ))}
-          </div>
+          </span>
+          <img
+            style={{ marginLeft: 450, marginTop: 30, width: 500 }}
+            src={questions[currentQuestion].clueAnswers}
+            alt=""
+          ></img>
         </>
       )}
     </div>

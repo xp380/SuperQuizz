@@ -8,6 +8,9 @@
   margin-top: 20px;
   background-color: lightskyblue;
   color: white;
+  float: right;
+  width: calc(50%);
+  margin-right: 300px;
 }
 
 .buttonAnswers:hover,

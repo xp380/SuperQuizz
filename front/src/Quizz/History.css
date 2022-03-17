@@ -1,0 +1,13 @@
+.historyButtons {
+  margin: auto;
+  margin-left: 10px;
+  background-color: yellow;
+  color: black;
+}
+
+.historyButtons:hover,
+.historyButtons:focus {
+  color: white;
+  background-color: green;
+  transition: all 1s ease-out;
+}
