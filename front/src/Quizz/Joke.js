@@ -1,35 +1,51 @@
 import React, { useState } from "react";
+import { Modal, Button } from "antd";
+import {
+  SmileOutlined,
+  FrownOutlined,
+  CloseCircleOutlined,
+} from "@ant-design/icons";
+import "./Joke.css";
 
 const Joke = () => {
   const questions = [
     {
-      questionText: "Quel est le premier jeu de fire emblem ?",
+      questionText: "Quelle est la couleur banane jaune ?",
       answerOptions: [
-        { answerText: "Shadow Dragon & the Blade of Light", isCorrect: true },
-        { answerText: "Three Houses", isCorrect: false },
-        { answerText: "Sacred Stones", isCorrect: false },
+        { answerText: "Jaune", isCorrect: true },
+        { answerText: "Verte", isCorrect: true },
+        { answerText: "Marron", isCorrect: true },
         {
-          answerText: "Path of Radiance",
-          isCorrect: false,
+          answerText: "Rouge",
+          isCorrect: true,
         },
       ],
     },
     {
-      questionText: "Qui est le créteur de ce site web ?",
+      questionText: "Qu'est ce qui crie plus fort qu'un cochon?",
       answerOptions: [
-        { answerText: "Jeff Bezos", isCorrect: false },
-        { answerText: "Vincent Kouoï", isCorrect: true },
-        { answerText: "Bill Gates", isCorrect: false },
-        { answerText: "Tony Stark", isCorrect: false },
+        { answerText: "Un cochon", isCorrect: true },
+        { answerText: "Un chien", isCorrect: true },
+        { answerText: "2 cochons", isCorrect: true },
+        { answerText: "Un mouton", isCorrect: true },
       ],
     },
     {
-      questionText: "Quelle crise frappe en ce moment?",
+      questionText: "Que dit un zéro quand il rencontre un huit ?",
       answerOptions: [
-        { answerText: "Covid 19", isCorrect: true },
-        { answerText: "Ebola", isCorrect: false },
-        { answerText: "Crise économique", isCorrect: false },
-        { answerText: "Sida", isCorrect: false },
+        { answerText: "Pousse-toi !", isCorrect: true },
+        { answerText: "T'es grand !", isCorrect: true },
+        { answerText: "T'as mis une ceinture ?", isCorrect: true },
+      ],
+    },
+    {
+      questionText: "Pourquoi les éléphants n'aiment-ils pas les ordinateurs ?",
+      answerOptions: [
+        { answerText: "Parce qu'il y a des souris", isCorrect: true },
+        {
+          answerText: "Parce qu'ils ne savent pas ce que c'est",
+          isCorrect: true,
+        },
       ],
     },
   ];
@@ -51,31 +67,38 @@ const Joke = () => {
     }
   };
 
-  const handlePreviousAnswer = () => {
-    const previousQuestion = currentQuestion - 1;
-    if (previousQuestion > questions.length) {
-      setCurrentQuestion(previousQuestion);
-    } else {
-      setShowScore(true);
-    }
-  };
   return (
-    <div className="app">
+    <div>
       {showScore ? (
-        <div className="score-section">
-          You scored {score} out of {questions.length}
+        <div style={{ textAlign: "center", marginTop: 200, fontSize: 30 }}>
+          You scored {score} out of {questions.length} <br />
+          {score > 2 ? (
+            <div>
+              Congratulation !!! <SmileOutlined />
+            </div>
+          ) : (
+            <div>
+              Too bad, You will do it better next time <br />
+              <FrownOutlined />
+            </div>
+          )}
         </div>
       ) : (
         <>
-          <div className="question-section">
-            <div className="question-count">
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
+          <div>
+            <div>
+              <span style={{ fontSize: 15, fontWeight: "bolder" }}>
+                Question {currentQuestion + 1}
+              </span>
+              /{questions.length}
             </div>
-            <div className="question-text">
+            <div
+              style={{ marginLeft: 500, fontSize: 15, fontWeight: "bolder" }}
+            >
               {questions[currentQuestion].questionText}
             </div>
           </div>
-          <div className="answer-section">
+          <div>
             {questions[currentQuestion].answerOptions.map((answerOption) => (
               <button
                 onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
@@ -84,9 +107,6 @@ const Joke = () => {
               </button>
             ))}
           </div>
-          <button onClick={() => handlePreviousAnswer()}>
-            <div>test</div>
-          </button>
         </>
       )}
     </div>

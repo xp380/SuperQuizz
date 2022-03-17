@@ -2,6 +2,7 @@ import React from "react";
 import Code from "./Quizz/Code";
 import History from "./Quizz/History";
 import Joke from "./Quizz/Joke";
+import Record from "./Quizz/Record";
 import Time from "./Components/Time";
 import Contact from "./Components/Contact";
 import "./HomePage.css";
@@ -48,7 +49,10 @@ export default function HomePage() {
             <TabPane tab="Joke" key="3">
               <Joke />
             </TabPane>
-            <TabPane tab="Contact" key="4">
+            <TabPane tab="Score" key="4">
+              <Record />
+            </TabPane>
+            <TabPane tab="Contact" key="5">
               <Contact />
             </TabPane>
           </Tabs>

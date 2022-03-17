@@ -89,7 +89,7 @@ const History = () => {
   return (
     <div>
       {showScore ? (
-        <div style={{ textAlign: "center", marginTop: 100, fontSize: 30 }}>
+        <div style={{ textAlign: "center", marginTop: 30, fontSize: 30 }}>
           You scored {score} out of {questions.length} <br />
           {score > 4 ? (
             <div>
