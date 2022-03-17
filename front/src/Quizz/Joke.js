@@ -50,6 +50,15 @@ const Joke = () => {
       setShowScore(true);
     }
   };
+
+  const handlePreviousAnswer = () => {
+    const previousQuestion = currentQuestion - 1;
+    if (previousQuestion > questions.length) {
+      setCurrentQuestion(previousQuestion);
+    } else {
+      setShowScore(true);
+    }
+  };
   return (
     <div className="app">
       {showScore ? (
@@ -75,6 +84,9 @@ const Joke = () => {
               </button>
             ))}
           </div>
+          <button onClick={() => handlePreviousAnswer()}>
+            <div>test</div>
+          </button>
         </>
       )}
     </div>
