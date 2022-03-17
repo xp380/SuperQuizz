@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import { Modal, Button } from "antd";
-import {
-  SmileOutlined,
-  FrownOutlined,
-  CloseCircleOutlined,
-} from "@ant-design/icons";
+import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 import "./Joke.css";
 
-const Joke = () => {
+const Joke = (props) => {
   const questions = [
     {
       questionText: "Quelle est la couleur banane jaune ?",
@@ -52,11 +47,10 @@ const Joke = () => {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  const [score, setScore] = useState(0);
 
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
-      setScore(score + 1);
+      props.setScore(props.score + 1);
     }
 
     const nextQuestion = currentQuestion + 1;
@@ -71,8 +65,8 @@ const Joke = () => {
     <div>
       {showScore ? (
         <div style={{ textAlign: "center", marginTop: 200, fontSize: 30 }}>
-          You scored {score} out of {questions.length} <br />
-          {score > 2 ? (
+          You scored {props.score} out of {questions.length} <br />
+          {props.score > 2 ? (
             <div>
               Congratulation !!! <SmileOutlined />
             </div>
