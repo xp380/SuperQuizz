@@ -7,7 +7,7 @@ import {
 } from "@ant-design/icons";
 import "./Code.css";
 
-const Code = () => {
+const Code = (props) => {
   const questions = [
     {
       questionText: "Quelle entreprise a développé React ?",
@@ -47,11 +47,11 @@ const Code = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  const [score, setScore] = useState(0);
+  // const [score, setScore] = useState(0);
 
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
-      setScore(score + 1);
+      props.setScore(props.score + 1);
     }
 
     const nextQuestion = currentQuestion + 1;
@@ -79,8 +79,8 @@ const Code = () => {
     <div>
       {showScore ? (
         <div style={{ textAlign: "center", marginTop: 200, fontSize: 30 }}>
-          You scored {score} out of {questions.length} <br />
-          {score > 2 ? (
+          You scored {props.score} out of {questions.length} <br />
+          {props.score > 2 ? (
             <div>
               Congratulation !!! <SmileOutlined />
             </div>
@@ -104,7 +104,7 @@ const Code = () => {
             >
               {questions[currentQuestion].questionText}
               <Button
-                style={{ width: 200, color: "black" }}
+                style={{ width: 150, color: "black", marginLeft: 30 }}
                 type="primary"
                 onClick={showModal}
               >

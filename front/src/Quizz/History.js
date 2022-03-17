@@ -3,7 +3,7 @@ import { Button } from "antd";
 import "./History.css";
 import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 
-const History = () => {
+const History = (props) => {
   const questions = [
     {
       questionText: "On situe l’apparition de l’homme à :",
@@ -69,14 +69,10 @@ const History = () => {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  const [score, setScore] = useState(0);
-  console.log(
-    "test",
-    questions.map((data) => data.questionText)
-  );
+
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
-      setScore(score + 1);
+      props.setScore(props.score + 1);
     }
 
     const nextQuestion = currentQuestion + 1;
@@ -90,8 +86,8 @@ const History = () => {
     <div>
       {showScore ? (
         <div style={{ textAlign: "center", marginTop: 30, fontSize: 30 }}>
-          You scored {score} out of {questions.length} <br />
-          {score > 4 ? (
+          You scored {props.score} out of {questions.length} <br />
+          {props.score > 4 ? (
             <div>
               Congratulation !!! <SmileOutlined />
             </div>
