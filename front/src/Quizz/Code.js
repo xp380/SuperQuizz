@@ -104,7 +104,7 @@ const Code = (props) => {
             >
               {questions[currentQuestion].questionText}
               <Button
-                style={{ width: 200, color: "black" }}
+                style={{ width: 150, color: "black", marginLeft: 30 }}
                 type="primary"
                 onClick={showModal}
               >
