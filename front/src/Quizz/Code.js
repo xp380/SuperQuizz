@@ -4,6 +4,8 @@ import {
   SmileOutlined,
   FrownOutlined,
   CloseCircleOutlined,
+  LeftOutlined,
+  RightOutlined,
 } from "@ant-design/icons";
 import "./Code.css";
 
@@ -62,6 +64,14 @@ const Code = (props) => {
     }
   };
 
+  const handleAnswerNavigation = () => {
+    const previousQuestion = currentQuestion - 1;
+    if (previousQuestion < questions.length) {
+      setCurrentQuestion(previousQuestion);
+    } else {
+      setShowScore(true);
+    }
+  };
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -104,7 +114,7 @@ const Code = (props) => {
             >
               {questions[currentQuestion].questionText}
               <Button
-                style={{ width: 150, color: "black", marginLeft: 30 }}
+                style={{ width: 200, color: "black" }}
                 type="primary"
                 onClick={showModal}
               >
@@ -130,6 +140,8 @@ const Code = (props) => {
                 {answerOption.answerText}
               </Button>
             ))}
+            <LeftOutlined onClick={() => handleAnswerNavigation()} />
+            <RightOutlined onClick={() => handleAnswerOptionClick()} />
           </div>
         </>
       )}
