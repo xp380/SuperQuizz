@@ -4,11 +4,37 @@
   flex-direction: row;
 }
 
+.designTitle {
+color: "white";
+font-weight: bolder;
+font-size: 25px;
+margin-left: 600px;
+}
+
+.designCountTimer {
+  width: 100px;
+  margin-top: 20px;
+  font-size: 30px;
+  margin-left: 600px;
+}
 .layout-content {
   height: 790px;
   background-color: steelblue;
 }
 
+.deepContent {
+  font-size: 15px;
+  font-weight: "bolder";
+}
+.designReload {
+  font-size: 30px;
+  margin-top: 20px
+}
+.designTimer {
+  font-size: 30px;
+  color: red;
+  margin-top: 170px;
+}
 .foot {
   display: flex;
   border-top: 1px solid #e8e8e8;

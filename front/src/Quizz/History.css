@@ -11,3 +11,37 @@
   background-color: green;
   transition: all 1s ease-out;
 }
+
+.questionsHistory {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 30px;
+}
+
+.currentQuestionHistory {
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.questionsDesignCurrent {
+margin-left: 500px;
+font-size: 15px;
+font-weight: bolder
+}
+
+.buttonAnswersHistory {
+display: flex;
+margin-top: 20px;
+margin-left: 200px
+}
+
+.iconsHistory {
+font-size: 20px;
+margin-top: 5px;
+}
+
+.pictureHistory {
+margin-left: 450px;
+margin-top: 30px;
+width: 500px;
+}

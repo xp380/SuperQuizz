@@ -10,7 +10,7 @@ import "./Joke.css";
 const Joke = (props) => {
   const questions = [
     {
-      questionText: "Quelle est la couleur banane jaune ?",
+      questionText: "Quelle est la couleur de la banane ?",
       answerOptions: [
         {
           answerText:
@@ -129,7 +129,7 @@ const Joke = (props) => {
           </div>
           <div>
             <LeftOutlined
-              style={{ fontSize: "20px", marginTop: 5 }}
+              className="leftJoke"
               onClick={() => handleAnswerNavigation()}
             />
             {questions[currentQuestion].answerOptions.map((answerOption) => (
@@ -138,17 +138,14 @@ const Joke = (props) => {
                 onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
               >
                 <img
-                  style={{
-                    width: 200,
-                    height: 200,
-                  }}
+                  className="pictureJoke"
                   src={answerOption.answerText}
                   alt=""
                 ></img>
               </button>
             ))}
             <RightOutlined
-              style={{ fontSize: "20px", marginTop: 5, marginLeft: 130 }}
+              className="rightJoke"
               onClick={() => handleAnswerOptionClick()}
             />
           </div>

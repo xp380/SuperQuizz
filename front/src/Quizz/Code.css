@@ -24,3 +24,37 @@
   color: white;
   font-size: 30px;
 }
+
+.resultHistory {
+  text-align: center;
+  margin-top: 200px;
+  font-size: 30px;
+}
+
+.questionsCode {
+  font-size: 15px;
+  font-weight: bolder
+}
+
+.questionsCodeCurrent {
+  margin-left: 500px;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.clueAnswersCode {
+width: 150px;
+color: black;
+text-align: center;
+margin-left: 600px;
+}
+
+.LeftCode {
+margin-top: 50px;
+font-size: 20px;
+}
+
+.RightCode {
+  margin-left: 90px;
+  font-size: 20px
+}

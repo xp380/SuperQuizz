@@ -100,7 +100,7 @@ const History = (props) => {
   return (
     <div>
       {showScore ? (
-        <div style={{ textAlign: "center", marginTop: 30, fontSize: 30 }}>
+        <div className="questionsHistory" >
           You scored {props.score} out of {questions.length} <br />
           {props.score > 4 ? (
             <div>
@@ -124,25 +124,22 @@ const History = (props) => {
         <>
           <div>
             <div>
-              <span style={{ fontSize: 15, fontWeight: "bolder" }}>
+              <span className="currentQuestionHistory">
                 Question {currentQuestion + 1}/{questions.length}
               </span>
             </div>
             <div
-              style={{ marginLeft: 500, fontSize: 15, fontWeight: "bolder" }}
+              className="questionsDesignCurrent"
             >
               {questions[currentQuestion].questionText}
             </div>
           </div>
           <span
-            style={{
-              display: "flex",
-              marginTop: 20,
-              marginLeft: 200,
-            }}
+            className="buttonAnswersHistory"
+
           >
             <LeftOutlined
-              style={{ fontSize: "20px", marginTop: 5 }}
+              className="iconsHistory"
               onClick={() => handleAnswerNavigation()}
             />
             {questions[currentQuestion].answerOptions.map((answerOption) => (
@@ -159,13 +156,13 @@ const History = (props) => {
             ))}
 
             <RightOutlined
-              style={{ fontSize: "20px", marginTop: 5 }}
+              className="iconsHistory"
               onClick={() => handleAnswerOptionClick()}
             />
           </span>
 
           <img
-            style={{ marginLeft: 450, marginTop: 30, width: 500 }}
+            className="pictureHistory"
             src={questions[currentQuestion].clueAnswers}
             alt=""
           ></img>

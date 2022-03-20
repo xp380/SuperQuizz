@@ -88,7 +88,7 @@ const Code = (props) => {
   return (
     <div>
       {showScore ? (
-        <div style={{ textAlign: "center", marginTop: 200, fontSize: 30 }}>
+        <div className="resultHistory">
           You scored {props.score} out of {questions.length} <br />
           {props.score > 2 ? (
             <div>
@@ -105,21 +105,16 @@ const Code = (props) => {
         <>
           <div>
             <div>
-              <span style={{ fontSize: 15, fontWeight: "bolder" }}>
+              <span className="questionsCode" >
                 Question {currentQuestion + 1}/{questions.length}
               </span>
             </div>
             <div
-              style={{ marginLeft: 500, fontSize: 15, fontWeight: "bolder" }}
+              className="questionsCodeCurrent"
             >
               {questions[currentQuestion].questionText}
               <Button
-                style={{
-                  width: 150,
-                  color: "black",
-                  textAlign: "center",
-                  marginLeft: 600,
-                }}
+                className="clueAnswersCode"
                 type="primary"
                 onClick={showModal}
               >
@@ -146,11 +141,11 @@ const Code = (props) => {
               </Button>
             ))}
             <LeftOutlined
-              style={{ marginTop: 50, fontSize: "20px" }}
+              className="LeftCode"
               onClick={() => handleAnswerNavigation()}
             />
             <RightOutlined
-              style={{ marginLeft: 90, fontSize: "20px" }}
+              className="RightCode"
               onClick={() => handleAnswerOptionClick()}
             />
           </div>

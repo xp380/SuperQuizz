@@ -43,28 +43,23 @@ const HomePage = () => {
       <Layout>
         <Header className="head">
           <ReloadOutlined
-            style={{ fontSize: 30, marginTop: 20 }}
+            className="designReload"
             onClick={refreshPage}
           />
           <span
-            style={{
-              color: "white",
-              fontWeight: "bolder",
-              fontSize: 25,
-              marginLeft: 600,
-            }}
+            className="designTitle"
           >
             SuperQuizz app
           </span>
 
           <FieldTimeOutlined
-            style={{ width: 100, marginTop: 30 }}
+            className="designCountTimer"
             onClick={() => setOk(!ok)}
           />
         </Header>
         <Content className="layout-content">
           <Tabs
-            style={{ fontSize: 15, fontWeight: "bolder" }}
+            className="deepContent"
             defaultActiveKey="1"
           >
             <TabPane tab="Code" key="1">
@@ -95,7 +90,7 @@ const HomePage = () => {
               <Contact />
             </TabPane>
           </Tabs>
-          <h1 style={{ color: "red", marginTop: 170 }}>
+          <h1 className="designTimer" >
             Temps Limite:{timers}
           </h1>
         </Content>

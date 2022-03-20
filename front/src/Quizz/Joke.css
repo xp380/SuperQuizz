@@ -1,0 +1,14 @@
+.pictureJoke {
+	width:200px;
+	height: 200px
+}
+.leftJoke {
+	font-size: 20px;
+	margin-top: 5px
+}
+
+.rightJoke {
+	font-size: 20px;
+	margin-top: 5px;
+	margin-left: 130px;
+}
