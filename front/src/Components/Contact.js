@@ -1,4 +1,5 @@
 import React from "react";
+import { notification } from "antd"
 import { useState } from "react";
 import { send } from "emailjs-com";
 import "./Contact.css";
@@ -11,6 +12,14 @@ const Contact = () => {
     reply_to: "vincentkouoi@gmail.com",
   });
 
+  const openNotification = () => {
+    notification.open({
+      message: 'Message sent',
+      style: {
+        width: 300,
+      },
+    });
+  };
   const onSubmit = (e) => {
     e.preventDefault();
     send(
@@ -37,15 +46,16 @@ const Contact = () => {
       </h1>
       <div
         style={{
-          marginLeft: 450,
-          marginTop: 200,
-          width: 700,
+          marginLeft: 400,
+          marginTop: 100,
+          width: 800,
           border: "solid",
+          height: 300,
         }}
       >
         <form onSubmit={onSubmit}>
           <input
-            style={{ marginLeft: 200, width: 300 }}
+            style={{ marginLeft: 200, width: 300, marginTop: 30 }}
             type="email"
             name="from_name"
             placeholder="votre adresse email"
@@ -62,7 +72,7 @@ const Contact = () => {
           />
 
           <input
-            style={{ marginTop: 20, width: 700, height: 100 }}
+            style={{ marginTop: 20, width: 700, height: 100, marginLeft: 40 }}
             type="textarea"
             name="message"
             placeholder="Votre message"
@@ -78,7 +88,8 @@ const Contact = () => {
             onChange={handleChange}
           />
           <button
-            style={{ width: 200, marginTop: 20, marginLeft: 200 }}
+            onClick={openNotification}
+            style={{ width: 150, marginTop: 20, marginLeft: 260 }}
             type="submit"
           >
             Submit
