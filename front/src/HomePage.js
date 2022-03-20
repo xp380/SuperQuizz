@@ -95,7 +95,9 @@ const HomePage = () => {
               <Contact />
             </TabPane>
           </Tabs>
-          <h1 style={{ color: "red" }}>Temps Limite:{timers}</h1>
+          <h1 style={{ color: "red", marginTop: 170 }}>
+            Temps Limite:{timers}
+          </h1>
         </Content>
       </Layout>
       <Footer className="foot">

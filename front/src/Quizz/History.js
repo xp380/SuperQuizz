@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Button } from "antd";
 import "./History.css";
-import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
+import {
+  SmileOutlined,
+  FrownOutlined,
+  LeftOutlined,
+  RightOutlined,
+} from "@ant-design/icons";
 
 const History = (props) => {
   const questions = [
@@ -82,6 +87,16 @@ const History = (props) => {
       setShowScore(true);
     }
   };
+
+  const handleAnswerNavigation = () => {
+    const previousQuestion = currentQuestion - 1;
+    if (previousQuestion < questions.length) {
+      setCurrentQuestion(previousQuestion);
+    } else {
+      setShowScore(true);
+    }
+  };
+
   return (
     <div>
       {showScore ? (
@@ -123,18 +138,32 @@ const History = (props) => {
             style={{
               display: "flex",
               marginTop: 20,
-              marginLeft: 20,
+              marginLeft: 200,
             }}
           >
+            <LeftOutlined
+              style={{ fontSize: "20px", marginTop: 5 }}
+              onClick={() => handleAnswerNavigation()}
+            />
             {questions[currentQuestion].answerOptions.map((answerOption) => (
-              <Button
-                className="historyButtons"
-                onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
-              >
-                {answerOption.answerText}
-              </Button>
+              <div>
+                <Button
+                  className="historyButtons"
+                  onClick={() =>
+                    handleAnswerOptionClick(answerOption.isCorrect)
+                  }
+                >
+                  {answerOption.answerText}
+                </Button>{" "}
+              </div>
             ))}
+
+            <RightOutlined
+              style={{ fontSize: "20px", marginTop: 5 }}
+              onClick={() => handleAnswerOptionClick()}
+            />
           </span>
+
           <img
             style={{ marginLeft: 450, marginTop: 30, width: 500 }}
             src={questions[currentQuestion].clueAnswers}

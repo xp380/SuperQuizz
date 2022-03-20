@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
+import {
+  SmileOutlined,
+  FrownOutlined,
+  LeftOutlined,
+  RightOutlined,
+} from "@ant-design/icons";
 import "./Joke.css";
 
 const Joke = (props) => {
@@ -7,11 +12,19 @@ const Joke = (props) => {
     {
       questionText: "Quelle est la couleur banane jaune ?",
       answerOptions: [
-        { answerText: "Jaune", isCorrect: true },
-        { answerText: "Verte", isCorrect: true },
-        { answerText: "Marron", isCorrect: true },
         {
-          answerText: "Rouge",
+          answerText:
+            "https://media.paperblog.fr/i/443/4430180/cest-fou-quon-peut-faire-avec-banane-L-XOgRHR.jpeg",
+          isCorrect: true,
+        },
+        {
+          answerText:
+            "https://www.demotivateur.fr/images-buzz/cover/600171544618a9b52d78df_Sans-titre-2021-11-09T165925.301.jpg",
+          isCorrect: true,
+        },
+        {
+          answerText:
+            "http://www.bien-manger-selon-les-saisons.com/produits-de-saison/fruits/images/fruit-banane-rouge.jpg",
           isCorrect: true,
         },
       ],
@@ -19,26 +32,39 @@ const Joke = (props) => {
     {
       questionText: "Qu'est ce qui crie plus fort qu'un cochon?",
       answerOptions: [
-        { answerText: "Un cochon", isCorrect: true },
-        { answerText: "Un chien", isCorrect: true },
-        { answerText: "2 cochons", isCorrect: true },
-        { answerText: "Un mouton", isCorrect: true },
-      ],
-    },
-    {
-      questionText: "Que dit un zéro quand il rencontre un huit ?",
-      answerOptions: [
-        { answerText: "Pousse-toi !", isCorrect: true },
-        { answerText: "T'es grand !", isCorrect: true },
-        { answerText: "T'as mis une ceinture ?", isCorrect: true },
-      ],
-    },
-    {
-      questionText: "Pourquoi les éléphants n'aiment-ils pas les ordinateurs ?",
-      answerOptions: [
-        { answerText: "Parce qu'il y a des souris", isCorrect: true },
         {
-          answerText: "Parce qu'ils ne savent pas ce que c'est",
+          answerText:
+            "https://pharmapets.imgix.net/media/amasty/blog/326-chien-agressif-900x600_optimized.jpg",
+          isCorrect: true,
+        },
+        {
+          answerText:
+            "https://www.chassepassion.net/wp-content/uploads/2011/09/raton-laveur.jpg",
+          isCorrect: true,
+        },
+        {
+          answerText:
+            "https://www.sciencesetavenir.fr/assets/img/2007/06/01/cover-r4x3w400-57df1ea6b481d-tigre.jpg",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      questionText: "Quel est le chat le plus paresseux dans le monde ?",
+      answerOptions: [
+        {
+          answerText:
+            "https://lechat.com/wp-content/uploads/2021/10/LES-MOTS-DU-CHAT-.png",
+          isCorrect: true,
+        },
+        {
+          answerText:
+            "http://idata.over-blog.com/3/89/02/75/passe-partout/a-24437.jpg",
+          isCorrect: true,
+        },
+        {
+          answerText:
+            "https://www.woopets.fr/assets/ckeditor/2020/sep/all/9305/originale/chatslazyfaineants2.jpg",
           isCorrect: true,
         },
       ],
@@ -56,6 +82,15 @@ const Joke = (props) => {
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
+    } else {
+      setShowScore(true);
+    }
+  };
+
+  const handleAnswerNavigation = () => {
+    const previousQuestion = currentQuestion - 1;
+    if (previousQuestion < questions.length) {
+      setCurrentQuestion(previousQuestion);
     } else {
       setShowScore(true);
     }
@@ -93,13 +128,29 @@ const Joke = (props) => {
             </div>
           </div>
           <div>
+            <LeftOutlined
+              style={{ fontSize: "20px", marginTop: 5 }}
+              onClick={() => handleAnswerNavigation()}
+            />
             {questions[currentQuestion].answerOptions.map((answerOption) => (
               <button
+                style={{ marginLeft: 250, marginTop: 30 }}
                 onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
               >
-                {answerOption.answerText}
+                <img
+                  style={{
+                    width: 200,
+                    height: 200,
+                  }}
+                  src={answerOption.answerText}
+                  alt=""
+                ></img>
               </button>
             ))}
+            <RightOutlined
+              style={{ fontSize: "20px", marginTop: 5, marginLeft: 130 }}
+              onClick={() => handleAnswerOptionClick()}
+            />
           </div>
         </>
       )}

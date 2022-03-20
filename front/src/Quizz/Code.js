@@ -114,7 +114,12 @@ const Code = (props) => {
             >
               {questions[currentQuestion].questionText}
               <Button
-                style={{ width: 200, color: "black" }}
+                style={{
+                  width: 150,
+                  color: "black",
+                  textAlign: "center",
+                  marginLeft: 600,
+                }}
                 type="primary"
                 onClick={showModal}
               >
@@ -128,7 +133,7 @@ const Code = (props) => {
               footer={false}
               width={600}
             >
-              <div>{questions[currentQuestion].clueAnswers} </div>
+              <div>{questions[currentQuestion].clueAnswers}</div>
             </Modal>
           </div>
           <div className="designAnswers">
@@ -140,8 +145,14 @@ const Code = (props) => {
                 {answerOption.answerText}
               </Button>
             ))}
-            <LeftOutlined onClick={() => handleAnswerNavigation()} />
-            <RightOutlined onClick={() => handleAnswerOptionClick()} />
+            <LeftOutlined
+              style={{ marginTop: 50, fontSize: "20px" }}
+              onClick={() => handleAnswerNavigation()}
+            />
+            <RightOutlined
+              style={{ marginLeft: 90, fontSize: "20px" }}
+              onClick={() => handleAnswerOptionClick()}
+            />
           </div>
         </>
       )}
